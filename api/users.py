@@ -1,4 +1,15 @@
+import json
+
 from fastapi import APIRouter
+from pydantic import BaseModel
+from uuid import uuid4
+
+from config import read_users, write_users
+
+class User(BaseModel):
+    id: uuid4
+    user_name: str = None
+    name: str | None = None
 
 router = APIRouter()
 
@@ -22,4 +33,15 @@ USERS = [
 
 @router.get("/api/users")
 async def get_users():
-    return USERS
+    return read_users()
+
+@router.get("/api/users/{user_name}")
+async def get_user(user_name: str):
+    return read_users()
+
+@router.post("/api/users/")
+async def craete_user(user: User):
+    users = read_users()
+    users.append(json.loads(user.model_dump_json()))
+    write_users(users)
+    return user
