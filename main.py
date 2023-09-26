@@ -9,11 +9,12 @@ from fastapi.staticfiles import StaticFiles
 
 api = FastAPI()
 
-from api import users
+from api import users, ping
 from views import index
 
 def configure_routing():
     api.mount("/static", StaticFiles(directory="static"), name="static")
+    api.include_router(ping.router)
     api.include_router(index.router)
     api.include_router(users.router)
 

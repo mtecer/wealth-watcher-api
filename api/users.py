@@ -90,3 +90,18 @@ async def delete_user(*, user_name: str):
     # return result
 
 # Update user by user id
+@router.put("/api/users/{user_id}", status_code=201)
+async def update_item(user_id: str, user: User) -> None:
+    users = read_users()
+    # user = [ user for user in users if user["id"] == user_id ]
+    # return {"user_id": user_id, **user.model_dump()}
+    for item in users:
+        if item['id'] == user_id:
+            item.update({
+                'user_name': user.user_name,
+                'name': user.name
+            })
+            updated_item = item
+            break
+    write_users(users)
+    return updated_item

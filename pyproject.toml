@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 fastapi = {extras = ["all"], version = "^0.103.1"}
+sqlmodel = {git = "https://github.com/honglei/sqlmodel.git"}
 
 
 [tool.poetry.group.dev.dependencies]

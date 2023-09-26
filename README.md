@@ -17,6 +17,10 @@ poetry shell
 poetry add pylint --group dev
 poetry add "fastapi[all]"
 
+# Until official SQLModel is updated, using a fork.
+# poetry add sqlmodel
+poetry add git+https://github.com/honglei/sqlmodel.git
+
 poetry show
 
 poetry install --sync --dry-run
