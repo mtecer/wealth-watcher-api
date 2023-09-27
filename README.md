@@ -32,3 +32,15 @@ poetry install --sync
 ```bash
 uvicorn main:api --reload
 ```
+
+## Build & Run Docker Images
+
+```bash
+# DOCKER_BUILDKIT=1 docker buildx build --pull -t python:local -f Dockerfile .
+docker buildx build --pull -t python:local -f Dockerfile .
+
+docker run -it --rm --name python python:local /bin/bash
+docker run -itd -p 8080:8080 --name python python:local
+
+poetry run uvicorn main:api --reload
+```
