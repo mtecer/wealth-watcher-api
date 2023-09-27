@@ -14,7 +14,8 @@ poetry init
 
 poetry shell
 
-poetry add pylint --group dev
+poetry add pylint pytest pytest-cov --group dev
+
 poetry add "fastapi[all]"
 
 # Until official SQLModel is updated, using a fork.
@@ -44,3 +45,28 @@ docker run -itd -p 8080:8080 --name python python:local
 
 poetry run uvicorn main:api --reload
 ```
+
+## Build & Run with Docker Compose
+
+```bash
+docker compose build ww-api
+
+docker compose up -d ww-api
+
+docker compose down ww-api
+
+docker compose ps
+docker compose top
+docker compose ls
+```
+
+## Test with pytest
+
+```bash
+pytest --verbose .
+
+python -m pytest tests -v
+```
+
+
+

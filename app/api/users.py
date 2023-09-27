@@ -4,7 +4,7 @@ from fastapi import APIRouter
 from pydantic import BaseModel, Field, PrivateAttr
 from uuid import uuid4
 
-from config import read_users, write_users
+from app.config import read_users, write_users
 
 def generate_uuid4() -> str:
     return str(uuid4())
