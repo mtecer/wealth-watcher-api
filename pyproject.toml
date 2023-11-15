@@ -9,12 +9,14 @@ readme = "README.md"
 python = "^3.11"
 fastapi = {extras = ["all"], version = "^0.103.1"}
 sqlmodel = {git = "https://github.com/honglei/sqlmodel.git"}
+bcrypt = "^4.0.1"
 
 
 [tool.poetry.group.dev.dependencies]
 pylint = "^2.17.5"
 pytest = "^7.4.2"
 pytest-cov = "^4.1.0"
+mypy = "^1.5.1"
 
 [build-system]
 requires = ["poetry-core"]
